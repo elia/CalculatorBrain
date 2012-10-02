@@ -10,4 +10,9 @@
 
 @interface CalculatorBrain : NSObject
 
+@property (nonatomic, strong) NSString *operation;
+
+- (void)pushOperand:(double)operand;
+- (double)performOperation;
+
 @end
