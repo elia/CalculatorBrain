@@ -9,21 +9,33 @@
 #import "CalculatorViewController.h"
 
 @interface CalculatorViewController ()
-
+@property (nonatomic) BOOL enteringANumber;
 @end
 
 @implementation CalculatorViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+@synthesize display;
+@synthesize enteringANumber;
+
+- (IBAction)digitPressed:(UIButton *)sender {
+  NSString *digit = [sender currentTitle];
+
+  // if ([self.display.text isEqualToString:@"0"]) {
+  if (self.enteringANumber) {
+    self.display.text = [self.display.text stringByAppendingString:digit];
+  } else {
+    self.display.text = digit;
+    self.enteringANumber = YES;
+  }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)enterPressed {
+}
+
+
+
+- (IBAction)operationPressed:(UIButton *)sender {
+  
 }
 
 @end
